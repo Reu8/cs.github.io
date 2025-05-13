@@ -231,6 +231,27 @@
             transform: scale(1.02);
         }
 
+        /* 新增备注输入框样式 */
+        .note-input-container {
+            margin: 15px 0;
+        }
+
+        .note-input-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .note-input-container input {
+            width: 100%;
+            height: 36px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
         /* 历史订单样式 */
         .history-section {
             margin-top: 20px;
@@ -594,9 +615,17 @@
             </div>
 
             <div class="seat-select-area">
+                <label style="display: block; margin-bottom: 5px; font-size: 14px;">就餐方式：</label>
+                <select class="seat-select" id="diningMethod">
+                    <option value="堂食" selected>堂食</option>
+                    <option value="打包">打包</option>
+                </select>
+            </div>
+
+            <div class="seat-select-area">
                 <label style="display: block; margin-bottom: 5px; font-size: 14px;">选择座位：</label>
                 <select class="seat-select" id="seatNumber">
-                    <option value="">请选择座位</option>
+                    <option value="" selected>请选择座位号</option>
                     <option value="01">01 四人桌</option>
                     <option value="02">02 四人桌</option>
                     <option value="03">03 四人桌</option>
@@ -610,13 +639,10 @@
                 </select>
             </div>
 
-            <div class="seat-select-area">
-                <label style="display: block; margin-bottom: 5px; font-size: 14px;">就餐方式：</label>
-                <select class="seat-select" id="diningMethod">
-                    <option value="">请选择就餐方式</option>
-                    <option value="堂食">堂食</option>
-                    <option value="打包">打包</option>
-                </select>
+            <!-- 新增备注输入框 -->
+            <div class="note-input-container">
+                <label>备注选填：</label>
+                <input type="text" id="orderNote" placeholder="少盐、不要香菜等">
             </div>
 
             <div class="total-section">
@@ -657,8 +683,9 @@
                 <div class="history-item">
                     <div class="history-time">${record.time}</div>
                     <div class="history-content">
-                        座位：${record.seat}<br>
+                        座位：${record.seat || "随机"}<br>
                         就餐方式：${record.diningMethod}<br>
+                        ${record.note ? `备注：${record.note}<br>` : ''}
                         总计：¥${record.total.toFixed(2)}<br>
                         <span style="color: ${getColorForStatus(record.status, record.paymentStatus)}">
                             状态：${record.status}（${record.paymentStatus}）
@@ -766,14 +793,27 @@
         function checkout() {
             const seat = document.getElementById('seatNumber').value;
             const diningMethod = document.getElementById('diningMethod').value;
-            if (!seat || cart.length === 0 || !diningMethod) {
-                return alert('请选择座位、就餐方式并添加菜品');
+            const note = document.getElementById('orderNote').value.trim();
+            
+            // 如果选择了打包，允许不选择座位
+            if (diningMethod === '打包') {
+                if (!diningMethod || cart.length === 0) {
+                    return alert('请选择就餐方式并添加菜品');
+                }
+            } else {
+                if (!diningMethod || cart.length === 0) {
+                    return alert('请选择就餐方式并添加菜品');
+                }
             }
+
+            // 如果是堂食但未选择座位号，则设置为"随机"
+            const finalSeat = diningMethod === '打包' ? '打包' : seat || '随机';
 
             history.push({
                 time: new Date().toLocaleString(),
-                seat,
+                seat: finalSeat,
                 diningMethod,
+                note,
                 items: [...cart],
                 total: cart.reduce((a, b) => a + b.price * b.quantity, 0),
                 status: "制作中",
@@ -786,7 +826,8 @@
             cart = [];
             document.querySelectorAll('input[type="number"]').forEach(i => i.value = 1);
             document.getElementById('seatNumber').value = '';
-            document.getElementById('diningMethod').value = '';
+            document.getElementById('diningMethod').value = '堂食';
+            document.getElementById('orderNote').value = '';
             renderCart();
             alert('下单成功！订单已进入制作流程');
         }
