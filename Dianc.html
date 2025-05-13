@@ -176,7 +176,7 @@
         }
 
         .remove-btn {
-            color: #ff4757;
+            color: #4ff757;
             font-size: 18px;
             cursor: pointer;
             transition: color 0.3s;
@@ -334,6 +334,50 @@
             border-color: #646cff;
             margin-left: 8px;
         }
+
+        /* 主食菜单样式 */
+        .main-food-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .main-food-item {
+            flex: 1 1 calc(33.333% - 10px);
+            min-width: 150px;
+            max-width: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 250px;
+        }
+
+        .main-food-item .item-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .main-food-item .item-name {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .main-food-item .item-price {
+            font-size: 14px;
+            color: #2d3748;
+        }
+
+        .main-food-item .add-btn {
+            padding: 8px 0;
+            font-size: 14px;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
@@ -342,9 +386,66 @@
     </div>
 
     <div class="container">
-        <!-- 菜单区域 -->
+        <!-- 主食菜单区域 -->
         <div class="menu-container">
-            <h2 class="section-title">今日菜单</h2>
+            <h2 class="section-title">主食</h2>
+            <div class="main-food-container">
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">米饭</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="米饭">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
+
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">米粉</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="米粉">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
+
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">河粉</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="河粉">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 美味菜系区域 -->
+        <div class="menu-container">
+            <h2 class="section-title">美味菜系</h2>
 
             <div class="menu-item" data-price-small="15" data-price-large="20" data-name="原味紫金八刀汤">
                 <div class="menu-info">
@@ -373,10 +474,10 @@
             <div class="menu-item" data-price-small="20" data-price-large="28" data-name="松露薯条">
                 <div class="menu-info">
                     <div>
-                        <div class="item-name">松露薯条</div>
+                        <div class="item-name">枸杞紫金八刀汤</div>
                     </div>
                     <div>
-                        <div class="item-price">小份¥20，大份¥28</div>
+                        <div class="item-price">小份¥15，大份¥20</div>
                     </div>
                 </div>
                 
@@ -394,13 +495,13 @@
                 <button class="add-btn" onclick="addToCart(this)">选择</button>
             </div>
 
-            <div class="menu-item" data-price-small="12" data-price-large="18" data-name="莫吉托气泡饮">
+            <div class="menu-item" data-price-small="18" data-price-large="24" data-name="香煎三文鱼">
                 <div class="menu-info">
                     <div>
-                        <div class="item-name">莫吉托气泡饮</div>
+                        <div class="item-name">客家酿豆腐</div>
                     </div>
                     <div>
-                        <div class="item-price">小份¥12，大份¥18</div>
+                        <div class="item-price">小份¥15，大份¥20</div>
                     </div>
                 </div>
                 
@@ -411,7 +512,55 @@
                 
                 <div class="quantity-control">
                     <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
-                    <input type="number" class="quantity-input" value="1" min="1" data-name="莫吉托气泡饮">
+                    <input type="number" class="quantity-input" value="1" min="1" data-name="香煎三文鱼">
+                    <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                </div>
+                
+                <button class="add-btn" onclick="addToCart(this)">选择</button>
+            </div>
+
+            <div class="menu-item" data-price-small="16" data-price-large="22" data-name="宫保鸡丁">
+                <div class="menu-info">
+                    <div>
+                        <div class="item-name">客家五花肉</div>
+                    </div>
+                    <div>
+                        <div class="item-price">小份¥15，大份¥20</div>
+                    </div>
+                </div>
+                
+                <select class="size-select">
+                    <option value="small">小份</option>
+                    <option value="large">大份</option>
+                </select>
+                
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" data-name="宫保鸡丁">
+                    <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                </div>
+                
+                <button class="add-btn" onclick="addToCart(this)">选择</button>
+            </div>
+
+            <div class="menu-item" data-price-small="14" data-price-large="19" data-name="清蒸鲈鱼">
+                <div class="menu-info">
+                    <div>
+                        <div class="item-name">客家炒米粉</div>
+                    </div>
+                    <div>
+                        <div class="item-price">小份¥8，大份¥12</div>
+                    </div>
+                </div>
+                
+                <select class="size-select">
+                    <option value="small">小份</option>
+                    <option value="large">大份</option>
+                </select>
+                
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" data-name="清蒸鲈鱼">
                     <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
                 </div>
                 
@@ -448,7 +597,7 @@
                 <label style="display: block; margin-bottom: 5px; font-size: 14px;">就餐方式：</label>
                 <select class="seat-select" id="diningMethod">
                     <option value="">请选择就餐方式</option>
-                    <option value="就餐">就餐</option>
+                    <option value="堂食">堂食</option>
                     <option value="打包">打包</option>
                 </select>
             </div>
@@ -561,17 +710,33 @@
         }
 
         function addToCart(btn) {
-            const item = btn.closest('.menu-item');
-            const name = item.dataset.name;
-            const size = item.querySelector('.size-select').value;
-            const price = size === 'small' ? +item.dataset.priceSmall : +item.dataset.priceLarge;
-            const qty = +item.querySelector('input').value;
+            let item;
+            if (btn.closest('.main-food-item')) {
+                item = btn.closest('.main-food-item');
+                const name = item.querySelector('input').dataset.name;
+                const size = item.querySelector('.size-select').value;
+                const price = size === '搭配' ? 0 : 5;
+                const qty = +item.querySelector('input').value;
 
-            const existing = cart.find(i => i.name === name && i.size === size);
-            if (existing) {
-                existing.quantity += qty;
+                const existing = cart.find(i => i.name === name && i.size === size);
+                if (existing) {
+                    existing.quantity += qty;
+                } else {
+                    cart.push({ name, price, quantity: qty, size });
+                }
             } else {
-                cart.push({ name, price, quantity: qty, size });
+                item = btn.closest('.menu-item');
+                const name = item.dataset.name;
+                const size = item.querySelector('.size-select').value;
+                const price = size === 'small' ? +item.dataset.priceSmall : +item.dataset.priceLarge;
+                const qty = +item.querySelector('input').value;
+
+                const existing = cart.find(i => i.name === name && i.size === size);
+                if (existing) {
+                    existing.quantity += qty;
+                } else {
+                    cart.push({ name, price, quantity: qty, size });
+                }
             }
             renderCart();
         }
@@ -588,8 +753,7 @@
                 return alert('请选择座位、就餐方式并添加菜品');
             }
 
-            // 生成订单信息
-            const orderInfo = {
+            history.push({
                 time: new Date().toLocaleString(),
                 seat,
                 diningMethod,
@@ -597,60 +761,17 @@
                 total: cart.reduce((a, b) => a + b.price * b.quantity, 0),
                 status: "制作中",
                 paymentStatus: "未付款"
-            };
+            });
 
-            // 添加到本地历史订单
-            history.push(orderInfo);
             localStorage.setItem('history', JSON.stringify(history));
             renderHistory();
 
-            // 清空购物车
             cart = [];
             document.querySelectorAll('input[type="number"]').forEach(i => i.value = 1);
             document.getElementById('seatNumber').value = '';
             document.getElementById('diningMethod').value = '';
             renderCart();
-
-            // 发送订单信息到Formspree
-            sendOrderToFormspree(orderInfo);
             alert('下单成功！订单已进入制作流程');
-        }
-
-        // 发送订单到Formspree
-        function sendOrderToFormspree(orderInfo) {
-            // 替换为你的Formspree表单URL
-            const formspreeUrl = 'https://formspree.io/f/mldbplgq';
-
-            // 构建提交数据
-            const formData = {
-                time: orderInfo.time,
-                seat: orderInfo.seat,
-                diningMethod: orderInfo.diningMethod,
-                total: orderInfo.total,
-                items: orderInfo.items.map(item => `${item.quantity} × ${item.name}（${item.size}）`).join(', ')
-            };
-
-            fetch(formspreeUrl, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'charset': 'utf-8'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('表单提交失败');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('订单已提交到Formspree:', data);
-            })
-            .catch(error => {
-                console.error('提交订单到Formspree时出错:', error);
-            });
         }
 
         function togglePaymentStatus(index) {
