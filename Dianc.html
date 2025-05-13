@@ -386,82 +386,6 @@
     </div>
 
     <div class="container">
-        <!-- 主食菜单区域 -->
-        <div class="menu-container">
-            <h2 class="section-title">主食</h2>
-            <div class="main-food-container">
-                <div class="main-food-item">
-                    <div class="item-info">
-                        <div class="item-name">米饭</div>
-                        <div class="item-price">搭配价:¥0，另加¥5</div>
-                    </div>
-                    <select class="size-select">
-                        <option value="免费">免费</option>
-                        <option value="另加">另加</option>
-                    </select>
-                    <div class="quantity-control">
-                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1" data-name="米饭">
-                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
-                    </div>
-                    <button class="add-btn" onclick="addToCart(this)">选择</button>
-                </div>
-
-                <div class="main-food-item">
-                    <div class="item-info">
-                        <div class="item-name">米粉</div>
-                        <div class="item-price">搭配价:¥0，另加¥5</div>
-                    </div>
-                    <select class="size-select">
-                        <option value="免费">免费</option>
-                        <option value="另加">另加</option>
-                    </select>
-                    <div class="quantity-control">
-                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1" data-name="米粉">
-                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
-                    </div>
-                    <button class="add-btn" onclick="addToCart(this)">选择</button>
-                </div>
-
-                <div class="main-food-item">
-                    <div class="item-info">
-                        <div class="item-name">河粉</div>
-                        <div class="item-price">搭配价:¥0，另加¥5</div>
-                    </div>
-                    <select class="size-select">
-                        <option value="免费">免费</option>
-                        <option value="另加">另加</option>
-                    </select>
-                    <div class="quantity-control">
-                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1" data-name="河粉">
-                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
-                    </div>
-                    <button class="add-btn" onclick="addToCart(this)">选择</button>
-                </div>
-
-                <div class="main-food-item">
-                    <div class="item-info">
-                        <div style="position: relative; display: inline-block;">
-                            <div style="font-size: 24px; color: #ff0000; margin-bottom: 5px;">❤</div>
-                            <div style="font-size: 16px; color: #333;">吴远燕我爱你</div>
-                        </div>
-                    </div>
-                    <select class="size-select">
-                        <option value="免费">免费</option>
-                        <option value="另加">另加</option>
-                    </select>
-                    <div class="quantity-control">
-                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1" data-name="爱心">
-                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
-                    </div>
-                    <button class="add-btn" onclick="addToCart(this)">选择</button>
-                </div>
-            </div>
-        </div>
-
         <!-- 美味菜系区域 -->
         <div class="menu-container">
             <h2 class="section-title">美味菜系</h2>
@@ -584,6 +508,80 @@
                 </div>
                 
                 <button class="add-btn" onclick="addToCart(this)">选择</button>
+            </div>
+        </div>
+
+        <!-- 主食菜单区域 -->
+        <div class="menu-container">
+            <h2 class="section-title">主食</h2>
+            <div class="main-food-container">
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">米饭</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="米饭">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
+
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">米粉</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="米粉">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
+
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">河粉</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="河粉">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
+
+                <div class="main-food-item">
+                    <div class="item-info">
+                        <div class="item-name">其他</div>
+                        <div class="item-price">搭配价:¥0，另加¥5</div>
+                    </div>
+                    <select class="size-select">
+                        <option value="免费">免费</option>
+                        <option value="另加">另加</option>
+                    </select>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" data-name="面条">
+                        <button class="quantity-btn" onclick="changeQuantity(this, +1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(this)">选择</button>
+                </div>
             </div>
         </div>
 
