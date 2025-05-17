@@ -288,17 +288,17 @@
             margin-bottom: 5px;
         }
 
-        .history-content {
-            font-size: 14px;
-            line-height: 1.4;
+        .history-item .dish-list {
+            font-size: 16px;
+            margin: 10px 0;
         }
 
-        .history-items {
-            margin-top: 8px;
-            padding-top: 8px;
+        .history-info {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 10px 0;
+            padding-top: 10px;
             border-top: 1px dashed #e0e0e0;
-            font-size: 12px;
-            color: #666;
         }
 
         .history-actions {
@@ -682,17 +682,17 @@
             historyDiv.innerHTML = sortedHistory.length ? sortedHistory.map((record, index) => `
                 <div class="history-item">
                     <div class="history-time">${record.time}</div>
-                    <div class="history-content">
-                        座位：${record.seat || "随机"}<br>
-                        就餐方式：${record.diningMethod}<br>
-                        ${record.note ? `备注：${record.note}<br>` : ''}
-                        总计：¥${record.total.toFixed(2)}<br>
-                        <span style="color: ${getColorForStatus(record.status, record.paymentStatus)}">
-                            状态：${record.status}（${record.paymentStatus}）
-                        </span>
+                    <div class="dish-list">
+                        ${renderDishList(record.items)}
                     </div>
-                    <div class="history-items">
-                        ${renderOrderItems(record.items)}
+                    <div class="history-info">
+                        <div>座位：${record.seat || "随机"}</div>
+                        <div>就餐方式：${record.diningMethod}</div>
+                        ${record.note ? `<div>备注：${record.note}</div>` : ''}
+                        <div>总计：¥${record.total.toFixed(2)}</div>
+                        <div style="color: ${getColorForStatus(record.status, record.paymentStatus)}">
+                            状态：${record.status}（${record.paymentStatus}）
+                        </div>
                     </div>
                     <div class="history-actions">
                         ${getStatusButtons(record, index)}
@@ -702,7 +702,7 @@
             `).join('') : '<p class="empty-tip">暂无历史订单</p>';
         }
 
-        function renderOrderItems(items) {
+        function renderDishList(items) {
             return items.map(item => `
                 <div>${item.quantity} × ${item.name}（${item.size}） - ¥${(item.price * item.quantity).toFixed(2)}</div>
             `).join('');
